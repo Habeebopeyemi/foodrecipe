@@ -49,11 +49,17 @@ class RecipeHomePage extends StatelessWidget {
           IconButton(onPressed: () {}, icon: const Icon(Icons.more_horiz))
         ],
       ),
-      body: const Column(
-        children: [
-          RecipeHeader(headerText: "How to make french toast"),
-          RecipeImageSection()
-        ],
+      body: const Padding(
+        padding: EdgeInsets.all(15.0),
+        child: Column(
+          children: [
+            RecipeHeader(headerText: "How to make french toast"),
+            RecipeImageSection(
+              baseImage: 'assets/frenchtoast.png',
+              upperImage: 'assets/playbutton.png',
+            )
+          ],
+        ),
       ),
     );
   }
@@ -64,34 +70,41 @@ class RecipeHeader extends StatelessWidget {
   final String headerText;
   @override
   Widget build(BuildContext context) {
-    return Text(
-      headerText,
-      style: GoogleFonts.roboto(fontSize: 37, fontWeight: FontWeight.w600),
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 10.0),
+      child: Center(
+        child: Text(
+          headerText,
+          style: GoogleFonts.roboto(
+              fontSize: 37, fontWeight: FontWeight.w600, height: 1),
+        ),
+      ),
     );
   }
 }
 
 class RecipeImageSection extends StatelessWidget {
-  const RecipeImageSection({super.key});
-
+  const RecipeImageSection(
+      {super.key, required this.baseImage, required this.upperImage});
+  final String baseImage;
+  final String upperImage;
   @override
   Widget build(BuildContext context) {
     return Stack(
+      alignment: Alignment.center,
       children: <Widget>[
-        Container(
-          width: 200,
-          height: 200,
-          color: Colors.blue,
+        ClipRRect(
+          borderRadius: BorderRadius.circular(10.0),
+          child: Image.asset(
+            baseImage,
+            width: 400,
+            fit: BoxFit.cover,
+          ),
         ),
-        Container(
-          width: 100,
-          height: 100,
-          color: Colors.red,
-        ),
-        Container(
+        Image.asset(
+          upperImage,
           width: 50,
-          height: 50,
-          color: Colors.green,
+          fit: BoxFit.cover,
         )
       ],
     );
