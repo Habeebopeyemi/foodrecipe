@@ -49,7 +49,21 @@ class RecipeHommePage extends StatelessWidget {
           IconButton(onPressed: () {}, icon: const Icon(Icons.more_horiz))
         ],
       ),
-      body: const Text("Body goes here"),
+      body: const Column(
+        children: [RecipeHeader(headerText: "How to make french toast")],
+      ),
+    );
+  }
+}
+
+class RecipeHeader extends StatelessWidget {
+  const RecipeHeader({super.key, required this.headerText});
+  final String headerText;
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      headerText,
+      style: GoogleFonts.roboto(fontSize: 37, fontWeight: FontWeight.w600),
     );
   }
 }
