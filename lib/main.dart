@@ -134,6 +134,7 @@ class ReviewSection extends StatelessWidget {
               "4.5",
               style: GoogleFonts.poppins(
                   color: Colors.black,
+                  followSection
                   fontWeight: FontWeight.w600,
                   fontSize: 18),
             ),
