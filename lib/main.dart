@@ -60,9 +60,11 @@ class RecipeHomePage extends StatelessWidget {
             ),
             ReviewSection(),
             FollowSection(
-                profilePicture: 'assets/user.png',
-                username: "Roberta Anny",
-                location: "Bali, Indonesia")
+              profilePicture: 'assets/user.png',
+              username: "Roberta Anny",
+              location: "Bali, Indonesia",
+              locationImage: 'assets/Location.png',
+            )
           ],
         ),
       ),
@@ -151,36 +153,58 @@ class FollowSection extends StatelessWidget {
       {super.key,
       required this.profilePicture,
       required this.username,
-      required this.location});
+      required this.location,
+      required this.locationImage});
   final String profilePicture;
   final String username;
   final String location;
+  final String locationImage;
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
         Expanded(
-          child: Row(
-            children: [
-              Image.asset(profilePicture),
-              Column(
-                children: [
-                  Text(username),
-                  Row(
+          child: Padding(
+            padding: const EdgeInsets.only(top: 20.0),
+            child: Row(
+              children: [
+                Image.asset(profilePicture),
+                Padding(
+                  padding: const EdgeInsets.only(left: 8.0),
+                  child: Column(
                     children: [
-                      const Icon(
-                        Icons.location_on,
-                        color: Colors.red,
+                      Text(
+                        username,
+                        style: GoogleFonts.poppins(
+                            fontWeight: FontWeight.bold, fontSize: 17),
                       ),
-                      Text(location)
+                      Row(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(right: 4.0),
+                            child: Image.asset(locationImage),
+                          ),
+                          Text(
+                            location,
+                            style: GoogleFonts.poppins(color: Colors.black45),
+                          )
+                        ],
+                      )
                     ],
-                  )
-                ],
-              )
-            ],
+                  ),
+                )
+              ],
+            ),
           ),
         ),
-        const Text("Follow")
+        TextButton(
+            onPressed: () {},
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text("Follow",
+                  style: GoogleFonts.poppins(
+                      backgroundColor: Colors.red, color: Colors.white)),
+            ))
       ],
     );
   }
