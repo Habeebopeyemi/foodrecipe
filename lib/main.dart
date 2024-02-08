@@ -57,7 +57,8 @@ class RecipeHomePage extends StatelessWidget {
             RecipeImageSection(
               baseImage: 'assets/frenchtoast.png',
               upperImage: 'assets/playbutton.png',
-            )
+            ),
+            ReviewSection()
           ],
         ),
       ),
@@ -107,6 +108,36 @@ class RecipeImageSection extends StatelessWidget {
           fit: BoxFit.cover,
         )
       ],
+    );
+  }
+}
+
+class ReviewSection extends StatelessWidget {
+  const ReviewSection({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(top: 10.0),
+      child: Row(
+        children: [
+          const Icon(Icons.star, color: Colors.yellow),
+          Padding(
+            padding: const EdgeInsets.only(left: 8.0, right: 8.0),
+            child: Text(
+              "4.5",
+              style: GoogleFonts.poppins(
+                  color: Colors.black,
+                  fontWeight: FontWeight.w900,
+                  fontSize: 18),
+            ),
+          ),
+          Text(
+            "(300 Reviews)",
+            style: GoogleFonts.poppins(color: Colors.black45),
+          )
+        ],
+      ),
     );
   }
 }
