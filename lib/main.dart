@@ -58,7 +58,11 @@ class RecipeHomePage extends StatelessWidget {
               baseImage: 'assets/frenchtoast.png',
               upperImage: 'assets/playbutton.png',
             ),
-            ReviewSection()
+            ReviewSection(),
+            FollowSection(
+                profilePicture: 'assets/user.png',
+                username: "Roberta Anny",
+                location: "Bali, Indonesia")
           ],
         ),
       ),
@@ -128,7 +132,7 @@ class ReviewSection extends StatelessWidget {
               "4.5",
               style: GoogleFonts.poppins(
                   color: Colors.black,
-                  fontWeight: FontWeight.w900,
+                  fontWeight: FontWeight.w600,
                   fontSize: 18),
             ),
           ),
@@ -138,6 +142,46 @@ class ReviewSection extends StatelessWidget {
           )
         ],
       ),
+    );
+  }
+}
+
+class FollowSection extends StatelessWidget {
+  const FollowSection(
+      {super.key,
+      required this.profilePicture,
+      required this.username,
+      required this.location});
+  final String profilePicture;
+  final String username;
+  final String location;
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Expanded(
+          child: Row(
+            children: [
+              Image.asset(profilePicture),
+              Column(
+                children: [
+                  Text(username),
+                  Row(
+                    children: [
+                      const Icon(
+                        Icons.location_on,
+                        color: Colors.red,
+                      ),
+                      Text(location)
+                    ],
+                  )
+                ],
+              )
+            ],
+          ),
+        ),
+        const Text("Follow")
+      ],
     );
   }
 }
