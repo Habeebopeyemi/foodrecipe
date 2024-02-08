@@ -199,12 +199,14 @@ class FollowSection extends StatelessWidget {
         ),
         TextButton(
             onPressed: () {},
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text("Follow",
-                  style: GoogleFonts.poppins(
-                      backgroundColor: Colors.red, color: Colors.white)),
-            ))
+            style: TextButton.styleFrom(
+                backgroundColor: Colors.red[600],
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10))),
+            child: Text("Follow",
+                style: GoogleFonts.poppins(
+                    color: Colors.white, fontWeight: FontWeight.w600)))
       ],
     );
   }
