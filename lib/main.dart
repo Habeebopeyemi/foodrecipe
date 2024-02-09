@@ -64,7 +64,8 @@ class RecipeHomePage extends StatelessWidget {
               username: "Roberta Anny",
               location: "Bali, Indonesia",
               locationImage: 'assets/Location.png',
-            )
+            ),
+            IngredientsSection()
           ],
         ),
       ),
@@ -165,7 +166,7 @@ class FollowSection extends StatelessWidget {
       children: [
         Expanded(
           child: Padding(
-            padding: const EdgeInsets.only(top: 20.0),
+            padding: const EdgeInsets.only(top: 20.0, bottom: 15.0),
             child: Row(
               children: [
                 Image.asset(profilePicture),
@@ -207,6 +208,38 @@ class FollowSection extends StatelessWidget {
             child: Text("Follow",
                 style: GoogleFonts.poppins(
                     color: Colors.white, fontWeight: FontWeight.w600)))
+      ],
+    );
+  }
+}
+
+class IngredientsSection extends StatelessWidget {
+  const IngredientsSection({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Row(
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(top: 15.0, bottom: 15.0),
+              child: Text(
+                "Ingredients",
+                style: GoogleFonts.roboto(
+                    fontSize: 20, fontWeight: FontWeight.bold),
+              ),
+            ),
+            const Spacer(),
+            Text(
+              "5 items",
+              style: GoogleFonts.roboto(color: Colors.black45),
+            )
+          ],
+        ),
+        const Column(
+          children: [Text("Ingredient cards goes here")],
+        )
       ],
     );
   }
