@@ -30,12 +30,6 @@ class RecipeHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        // title: const Text(
-        //   "foodrecipe",
-        //   style: TextStyle(
-        //     color: Colors.black87,
-        //   ),
-        // ),
         elevation: 4.5,
         backgroundColor: Colors.white70,
         leading: IconButton(
@@ -79,12 +73,12 @@ class RecipeHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: 10.0),
+      padding: const EdgeInsets.only(bottom: 20.0),
       child: Center(
         child: Text(
           headerText,
-          style: GoogleFonts.roboto(
-              fontSize: 37, fontWeight: FontWeight.w600, height: 1),
+          style: GoogleFonts.poppins(
+              fontSize: 30, fontWeight: FontWeight.w600, height: 1),
         ),
       ),
     );
@@ -106,6 +100,7 @@ class RecipeImageSection extends StatelessWidget {
           child: Image.asset(
             baseImage,
             width: 400,
+            height: 200,
             fit: BoxFit.cover,
           ),
         ),
@@ -223,7 +218,7 @@ class IngredientsSection extends StatelessWidget {
         Row(
           children: [
             Padding(
-              padding: const EdgeInsets.only(top: 15.0, bottom: 15.0),
+              padding: const EdgeInsets.only(top: 8.0, bottom: 10.0),
               child: Text(
                 "Ingredients",
                 style: GoogleFonts.roboto(
@@ -238,9 +233,62 @@ class IngredientsSection extends StatelessWidget {
           ],
         ),
         const Column(
-          children: [Text("Ingredient cards goes here")],
+          children: [
+            IngredientCards(
+                ingredientImage: 'assets/bread.png',
+                ingredientName: "Bread",
+                ingredientWeight: "200g")
+          ],
         )
       ],
+    );
+  }
+}
+
+class IngredientCards extends StatelessWidget {
+  const IngredientCards(
+      {super.key,
+      required this.ingredientImage,
+      required this.ingredientName,
+      required this.ingredientWeight});
+  final String ingredientImage;
+  final String ingredientName;
+  final String ingredientWeight;
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.all(15.0),
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10.0), color: Colors.black12),
+      child: Row(
+        children: [
+          Row(
+            children: [
+              Container(
+                  padding: const EdgeInsets.all(8.0),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10.0),
+                      color: Colors.white),
+                  child: Image.asset(ingredientImage)),
+              const SizedBox(
+                width: 15.0,
+              ),
+              Text(
+                ingredientName,
+                style: GoogleFonts.roboto(
+                    color: Colors.black54,
+                    fontSize: 22,
+                    fontWeight: FontWeight.bold),
+              )
+            ],
+          ),
+          const Spacer(),
+          Text(
+            ingredientWeight,
+            style: GoogleFonts.roboto(color: Colors.black54, fontSize: 15),
+          )
+        ],
+      ),
     );
   }
 }
