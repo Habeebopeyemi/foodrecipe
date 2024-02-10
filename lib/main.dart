@@ -23,6 +23,40 @@ class MyApp extends StatelessWidget {
   }
 }
 
+class Ingredient {
+  final String ingredientImage;
+  final String ingredientName;
+  final String ingredientWeight;
+
+  Ingredient(
+      {required this.ingredientImage,
+      required this.ingredientName,
+      required this.ingredientWeight});
+}
+
+final List<Ingredient> ingredients = [
+  Ingredient(
+      ingredientImage: 'assets/bread.png',
+      ingredientName: "Bread",
+      ingredientWeight: "200g"),
+  Ingredient(
+      ingredientImage: 'assets/eggs.png',
+      ingredientName: "Eggs",
+      ingredientWeight: "200g"),
+  Ingredient(
+      ingredientImage: 'assets/bread.png',
+      ingredientName: "Milk",
+      ingredientWeight: "200g"),
+  Ingredient(
+      ingredientImage: 'assets/eggs.png',
+      ingredientName: "Lipton",
+      ingredientWeight: "200g"),
+  Ingredient(
+      ingredientImage: 'assets/bread.png',
+      ingredientName: "Coffee",
+      ingredientWeight: "200g"),
+];
+
 class RecipeHomePage extends StatelessWidget {
   const RecipeHomePage({super.key});
 
@@ -30,12 +64,6 @@ class RecipeHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        // title: const Text(
-        //   "foodrecipe",
-        //   style: TextStyle(
-        //     color: Colors.black87,
-        //   ),
-        // ),
         elevation: 4.5,
         backgroundColor: Colors.white70,
         leading: IconButton(
@@ -64,7 +92,8 @@ class RecipeHomePage extends StatelessWidget {
               username: "Roberta Anny",
               location: "Bali, Indonesia",
               locationImage: 'assets/Location.png',
-            )
+            ),
+            Expanded(child: IngredientsSection()),
           ],
         ),
       ),
@@ -78,12 +107,12 @@ class RecipeHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: 10.0),
+      padding: const EdgeInsets.only(bottom: 20.0),
       child: Center(
         child: Text(
           headerText,
-          style: GoogleFonts.roboto(
-              fontSize: 37, fontWeight: FontWeight.w600, height: 1),
+          style: GoogleFonts.poppins(
+              fontSize: 30, fontWeight: FontWeight.w600, height: 1),
         ),
       ),
     );
@@ -105,6 +134,7 @@ class RecipeImageSection extends StatelessWidget {
           child: Image.asset(
             baseImage,
             width: 400,
+            height: 200,
             fit: BoxFit.cover,
           ),
         ),
@@ -165,7 +195,7 @@ class FollowSection extends StatelessWidget {
       children: [
         Expanded(
           child: Padding(
-            padding: const EdgeInsets.only(top: 20.0),
+            padding: const EdgeInsets.only(top: 20.0, bottom: 15.0),
             child: Row(
               children: [
                 Image.asset(profilePicture),
@@ -208,6 +238,97 @@ class FollowSection extends StatelessWidget {
                 style: GoogleFonts.poppins(
                     color: Colors.white, fontWeight: FontWeight.w600)))
       ],
+    );
+  }
+}
+
+class IngredientsSection extends StatelessWidget {
+  const IngredientsSection({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Row(
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(top: 8.0, bottom: 10.0),
+              child: Text(
+                "Ingredients",
+                style: GoogleFonts.roboto(
+                    fontSize: 20, fontWeight: FontWeight.bold),
+              ),
+            ),
+            const Spacer(),
+            Text(
+              "5 items",
+              style: GoogleFonts.roboto(color: Colors.black45),
+            )
+          ],
+        ),
+        Expanded(
+            child: ListView.builder(
+                itemCount: ingredients.length,
+                itemBuilder: (context, index) {
+                  final ingredient = ingredients[index];
+                  return Padding(
+                    padding: const EdgeInsets.only(bottom: 10.0),
+                    child: IngredientCards(
+                        ingredientImage: ingredient.ingredientImage,
+                        ingredientName: ingredient.ingredientName,
+                        ingredientWeight: ingredient.ingredientWeight),
+                  );
+                }))
+      ],
+    );
+  }
+}
+
+class IngredientCards extends StatelessWidget {
+  const IngredientCards(
+      {super.key,
+      required this.ingredientImage,
+      required this.ingredientName,
+      required this.ingredientWeight});
+  final String ingredientImage;
+  final String ingredientName;
+  final String ingredientWeight;
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.all(15.0),
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10.0), color: Colors.black12),
+      child: Row(
+        children: [
+          Row(
+            children: [
+              Container(
+                  padding: const EdgeInsets.all(8.0),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10.0),
+                      color: Colors.white),
+                  child: Image.asset(ingredientImage)),
+              const SizedBox(
+                width: 15.0,
+              ),
+              Text(
+                ingredientName,
+                style: GoogleFonts.roboto(
+                    color: Colors.black54,
+                    fontSize: 22,
+                    fontWeight: FontWeight.bold),
+              )
+            ],
+          ),
+          const Spacer(),
+          Text(
+            ingredientWeight,
+            style: GoogleFonts.roboto(color: Colors.black54, fontSize: 15),
+          )
+        ],
+      ),
     );
   }
 }
