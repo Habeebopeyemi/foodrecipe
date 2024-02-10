@@ -23,6 +23,40 @@ class MyApp extends StatelessWidget {
   }
 }
 
+class Ingredient {
+  final String ingredientImage;
+  final String ingredientName;
+  final String ingredientWeight;
+
+  Ingredient(
+      {required this.ingredientImage,
+      required this.ingredientName,
+      required this.ingredientWeight});
+}
+
+final List<Ingredient> ingredients = [
+  Ingredient(
+      ingredientImage: 'assets/bread.png',
+      ingredientName: "Bread",
+      ingredientWeight: "200g"),
+  Ingredient(
+      ingredientImage: 'assets/eggs.png',
+      ingredientName: "Eggs",
+      ingredientWeight: "200g"),
+  Ingredient(
+      ingredientImage: 'assets/bread.png',
+      ingredientName: "Milk",
+      ingredientWeight: "200g"),
+  Ingredient(
+      ingredientImage: 'assets/eggs.png',
+      ingredientName: "Lipton",
+      ingredientWeight: "200g"),
+  Ingredient(
+      ingredientImage: 'assets/bread.png',
+      ingredientName: "Coffee",
+      ingredientWeight: "200g"),
+];
+
 class RecipeHomePage extends StatelessWidget {
   const RecipeHomePage({super.key});
 
@@ -59,7 +93,7 @@ class RecipeHomePage extends StatelessWidget {
               location: "Bali, Indonesia",
               locationImage: 'assets/Location.png',
             ),
-            IngredientsSection()
+            Expanded(child: IngredientsSection()),
           ],
         ),
       ),
@@ -214,6 +248,7 @@ class IngredientsSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisSize: MainAxisSize.min,
       children: [
         Row(
           children: [
@@ -232,14 +267,19 @@ class IngredientsSection extends StatelessWidget {
             )
           ],
         ),
-        const Column(
-          children: [
-            IngredientCards(
-                ingredientImage: 'assets/bread.png',
-                ingredientName: "Bread",
-                ingredientWeight: "200g")
-          ],
-        )
+        Expanded(
+            child: ListView.builder(
+                itemCount: ingredients.length,
+                itemBuilder: (context, index) {
+                  final ingredient = ingredients[index];
+                  return Padding(
+                    padding: const EdgeInsets.only(bottom: 10.0),
+                    child: IngredientCards(
+                        ingredientImage: ingredient.ingredientImage,
+                        ingredientName: ingredient.ingredientName,
+                        ingredientWeight: ingredient.ingredientWeight),
+                  );
+                }))
       ],
     );
   }
