@@ -12,7 +12,10 @@ class RecipeHeader extends StatelessWidget {
         child: Text(
           headerText,
           style: GoogleFonts.poppins(
-              fontSize: 30, fontWeight: FontWeight.w600, height: 1),
+              fontSize: 30,
+              fontWeight: FontWeight.w600,
+              height: 1,
+              color: const Color(0xFF000000)),
         ),
       ),
     );

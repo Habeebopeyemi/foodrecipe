@@ -29,7 +29,9 @@ class FollowSection extends StatelessWidget {
                       Text(
                         username,
                         style: GoogleFonts.poppins(
-                            fontWeight: FontWeight.bold, fontSize: 17),
+                            fontWeight: FontWeight.bold,
+                            fontSize: 17,
+                            color: const Color(0xFF000000)),
                       ),
                       Row(
                         children: [
@@ -39,7 +41,8 @@ class FollowSection extends StatelessWidget {
                           ),
                           Text(
                             location,
-                            style: GoogleFonts.poppins(color: Colors.black45),
+                            style: GoogleFonts.poppins(
+                                color: const Color(0xFFA9A9A9)),
                           )
                         ],
                       )
@@ -53,7 +56,7 @@ class FollowSection extends StatelessWidget {
         TextButton(
             onPressed: () {},
             style: TextButton.styleFrom(
-                backgroundColor: Colors.red[600],
+                backgroundColor: const Color(0xFFE23E3E),
                 padding: const EdgeInsets.symmetric(horizontal: 16),
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10))),

@@ -16,14 +16,14 @@ class ReviewSection extends StatelessWidget {
             child: Text(
               "4.5",
               style: GoogleFonts.poppins(
-                  color: Colors.black,
+                  color: const Color(0xFF000000),
                   fontWeight: FontWeight.w600,
                   fontSize: 18),
             ),
           ),
           Text(
             "(300 Reviews)",
-            style: GoogleFonts.poppins(color: Colors.black45),
+            style: GoogleFonts.poppins(color: const Color(0xFFA9A9A9)),
           )
         ],
       ),

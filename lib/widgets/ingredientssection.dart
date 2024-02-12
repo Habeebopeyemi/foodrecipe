@@ -59,7 +59,8 @@ class IngredientCards extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(15.0),
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10.0), color: Colors.black12),
+          borderRadius: BorderRadius.circular(10.0),
+          color: const Color(0x35A9A9A9)),
       child: Row(
         children: [
           Row(
@@ -76,7 +77,7 @@ class IngredientCards extends StatelessWidget {
               Text(
                 ingredientName,
                 style: GoogleFonts.roboto(
-                    color: Colors.black54,
+                    color: const Color(0xFF303030),
                     fontSize: 22,
                     fontWeight: FontWeight.bold),
               )
@@ -85,7 +86,8 @@ class IngredientCards extends StatelessWidget {
           const Spacer(),
           Text(
             ingredientWeight,
-            style: GoogleFonts.roboto(color: Colors.black54, fontSize: 15),
+            style: GoogleFonts.roboto(
+                color: const Color(0xFFA9A9A9), fontSize: 15),
           )
         ],
       ),
