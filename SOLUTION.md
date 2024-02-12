@@ -11,7 +11,7 @@ This Flutter project is a beautifully designed recipe application that showcases
 - **Asset Management**: Static assets like images are efficiently managed and used throughout the app to create a more engaging user experience.
 - **Responsive Design**: The layout is designed to be responsive, ensuring a great user experience across different device sizes.
 
-<img width="415" alt="FoodRecipe" src="https://github.com/Habeebopeyemi/foodrecipe/assets/recipeapp.png">
+![Recipe App final image](./recipeapp.png)
 
 ## Widgets Used
 
